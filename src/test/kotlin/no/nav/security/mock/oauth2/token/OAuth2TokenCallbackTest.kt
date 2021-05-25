@@ -24,7 +24,7 @@ internal class OAuth2TokenCallbackTest {
                         "sub" to "subByScope1",
                         "aud" to listOf("audByScope1"),
                         "custom" to "custom1"
-                    )
+                    ),
                 ),
                 RequestMapping(
                     requestParam = "grant_type",

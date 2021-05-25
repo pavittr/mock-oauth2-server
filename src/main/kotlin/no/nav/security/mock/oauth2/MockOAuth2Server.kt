@@ -1,5 +1,6 @@
 package no.nav.security.mock.oauth2
 
+import com.nimbusds.jose.JOSEObjectType
 import com.nimbusds.jwt.JWTClaimsSet
 import com.nimbusds.jwt.SignedJWT
 import com.nimbusds.oauth2.sdk.AuthorizationCode
@@ -34,6 +35,7 @@ import no.nav.security.mock.oauth2.token.OAuth2TokenCallback
 import okhttp3.HttpUrl
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.RecordedRequest
+import kotlin.jvm.Throws
 
 private val log = KotlinLogging.logger { }
 
@@ -115,6 +117,7 @@ open class MockOAuth2Server(
         "default",
         DefaultOAuth2TokenCallback(
             issuerId,
+            JOSEObjectType.JWT.type,
             subject,
             audience?.let { listOf(it) },
             claims,
